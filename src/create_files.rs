@@ -163,8 +163,15 @@ fn gen_pair_range(range: usize, temp_dir: String){
 
     rez = temp_rez.clone();
 
+    
+    let mut temp_char = ran_char.to_string();
 
-    rez.replace_range(0..1, &ran_char.to_string());
+    while temp_char.chars().next().unwrap() == rez.chars().next().unwrap(){
+        temp_char = rng.gen_range('a'..'z').to_string();
+
+    }
+
+    rez.replace_range(0..1, &temp_char.to_string());
     
     rez = format!("{},{}", rez, temp_rez);
 

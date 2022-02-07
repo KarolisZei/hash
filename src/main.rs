@@ -58,7 +58,6 @@ fn read() -> std::io::Result<()>{
     let mut input = String::new();
     io::stdin().read_line(&mut input).expect("unable to parse input");
     
-    println!("{}", input.eq("n\n"));
 
     if input.eq("y\n") || input.eq("Y\n") {
         println!("Creating new files...");
@@ -155,6 +154,7 @@ fn read() -> std::io::Result<()>{
                 generate_100000_different_1(temp_dir.clone()).map_err(|err| println!("{:?}",err)).ok();
                 println!("File created!");
             }
+            
         hash(temp_dir.clone() + "/100000_pairs_diff.txt", 1).map_err(|err| println!("{:?}",err)).ok();
 
         check_col();

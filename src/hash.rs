@@ -68,7 +68,9 @@ pub fn hash(file_location: String, known_format :i32) -> std::io::Result<()>{
     Ok(())
 }
 
-
+// problem input
+// aHLev1n16Wfm6jeYsZeg8B8ztQFFQTU4d3zG3SeRdtejX1qymHZtW3Ju2DGKfFTEt5oSLkV6ti8Was34i7pZxkpG00NIBhfl3CjkLaXJzpjpQXNiuwsxMI7XbKk41fwIU6tHJaCyV3fZ9PUFtcQbAvoo27cv5TQEUeL4vyDc8NvQZFzJAfrLlwkRIQDyVgFnPKcfxs8Rx6F9Edoxwk2bPN7rTRWoyGo5rc3qLdBviKV8z62xNA8z4PYbGd9ORF6tdjPLlzqBO9Byy2hGuDSSGkN8IYhbfMUaEfiau8Q6FVDy60vfTibuVOtgcebPM7BZxbY0QFVpF60wRdCInX3XaDN38SAvQEqNJUGiukDSP0TZgv9FHhHqUcVRMekg2CB9HkrHuxvFC7hWwaSCVyEhv13nryo0ThL6bjSmGDSx6w4NnZqVr0QL1g2K5VS58PfhYNdAEuoKdWW1Dni8ql48LK4co1qPL6ngAac7hZrnsfRgg4dgPtmvDRDdYqxGpipjzOeKxIArKwwoxfMu4yXBUOXwmWgdVJ7ARi68uiRSPiRXlYInK3FXwF1ykie43SP3Ck7KFqc4jgR6XjtrD3pc6lDBIwYAcYnhKqXMQcMkoTxNXH4MgZTcQGmcJoCjEzd2u2Mar1OgsWpwQbPrYeHT6FnboESrOuA6VPtM6x1ZTbEOaQ5yNoyLHJO9HjofQBCZYuleV14cYd17g2VEM7b776NPuW4YmNlGG2iXfskAOcyT6F8nJhtLffXHu17T3djDaCpD0avmFeKbUv17GoJpoRsbR4feCoW5ZyTn4IIkZ2jZgN9MpMQutz83kA1mwJ4YTBwgTCun6loPpDxzAb0MxDTbD2W0bM0LRKL1I6Qsp1tEsDvF6ySfTtHI856Pq32LP5prRHuXEsoauX5qanKyCRVh5Uj1cCvGp82QXCQt7KvSIj2mt9e2nvv1vtNRIdjH1t5BOUJi5nBIULPfop8A21vQK9VsxYKyCu1Pz6YY
+// 2HLev1n16Wfm6jeYsZeg8B8ztQFFQTU4d3zG3SeRdtejX1qymHZtW3Ju2DGKfFTEt5oSLkV6ti8Was34i7pZxkpG00NIBhfl3CjkLaXJzpjpQXNiuwsxMI7XbKk41fwIU6tHJaCyV3fZ9PUFtcQbAvoo27cv5TQEUeL4vyDc8NvQZFzJAfrLlwkRIQDyVgFnPKcfxs8Rx6F9Edoxwk2bPN7rTRWoyGo5rc3qLdBviKV8z62xNA8z4PYbGd9ORF6tdjPLlzqBO9Byy2hGuDSSGkN8IYhbfMUaEfiau8Q6FVDy60vfTibuVOtgcebPM7BZxbY0QFVpF60wRdCInX3XaDN38SAvQEqNJUGiukDSP0TZgv9FHhHqUcVRMekg2CB9HkrHuxvFC7hWwaSCVyEhv13nryo0ThL6bjSmGDSx6w4NnZqVr0QL1g2K5VS58PfhYNdAEuoKdWW1Dni8ql48LK4co1qPL6ngAac7hZrnsfRgg4dgPtmvDRDdYqxGpipjzOeKxIArKwwoxfMu4yXBUOXwmWgdVJ7ARi68uiRSPiRXlYInK3FXwF1ykie43SP3Ck7KFqc4jgR6XjtrD3pc6lDBIwYAcYnhKqXMQcMkoTxNXH4MgZTcQGmcJoCjEzd2u2Mar1OgsWpwQbPrYeHT6FnboESrOuA6VPtM6x1ZTbEOaQ5yNoyLHJO9HjofQBCZYuleV14cYd17g2VEM7b776NPuW4YmNlGG2iXfskAOcyT6F8nJhtLffXHu17T3djDaCpD0avmFeKbUv17GoJpoRsbR4feCoW5ZyTn4IIkZ2jZgN9MpMQutz83kA1mwJ4YTBwgTCun6loPpDxzAb0MxDTbD2W0bM0LRKL1I6Qsp1tEsDvF6ySfTtHI856Pq32LP5prRHuXEsoauX5qanKyCRVh5Uj1cCvGp82QXCQt7KvSIj2mt9e2nvv1vtNRIdjH1t5BOUJi5nBIULPfop8A21vQK9VsxYKyCu1Pz6YY
 fn get_hash(input: &str) -> String{
 
     let mut rez: String = String::new();
@@ -121,14 +123,13 @@ fn padding(mut input: [[u8; 16]; 8]) -> [[u8; 16]; 8]{
 
     let mut excess: i32 = 1;
 
-    let mut modifier: i32 = 1;
 
     let mut temp_val: i32 = 1;
 
     let mut counter = 0;
 
     loop{
-        input[block][counter] = (((input[block][0] as i32 * 127 + 1) % 255 + input[block][back_counter] as i32) % 255) as u8;
+        input[block][counter] = (((input[block][0] as i32 * 127) % 255 + input[block][back_counter] as i32) % 255) as u8;
 
 
         temp_val += input[block][counter] as i32 * input[block][counter] as i32 * excess as i32;
@@ -139,32 +140,33 @@ fn padding(mut input: [[u8; 16]; 8]) -> [[u8; 16]; 8]{
         
         let mut temp_counter: usize = 0;
 
-        for elem in input[block] {
+        for mut elem in input[block] {
 
-            if input[block][temp_counter] > 126 {
-                excess += (input[block][temp_counter] / 126 * 5) as i32; 
-                input[block][temp_counter] %= 126;
+            if elem > 126 {
+                excess += (elem as i32 / 126 * 5) as i32; 
+                elem %= 126;
                 
             }
 
-            input[block][temp_counter] = ((elem as i32 * input[block][temp_counter] as i32)%126) as u8;
+            excess += elem as i32 * 10 /126;
 
-            if input[block][temp_counter] > 126 {
-                excess += (input[block][temp_counter] / 126 * 5) as i32; 
-                input[block][temp_counter] %= 126;
-                
-            }
-            
-            if input[block][temp_counter] < 32 {
-                excess += ((input[block][temp_counter])) as i32;
-                input[block][temp_counter] += 33;
-            }
+
+            elem = ((elem as i32 * input[block][temp_counter] as i32 * excess)%126) as u8;
+
+
     
+            if elem < 32 {
+                excess += ((elem)) as i32;
+                elem += 33;
+            }
+            input[block][temp_counter] = elem;
             temp_counter +=1;
+
+            
+    
+            
         }
-        modifier += input[block][counter] as i32;
-
-
+        
         if back_counter > 0 {
             back_counter = back_counter - 1;
         }
@@ -175,6 +177,8 @@ fn padding(mut input: [[u8; 16]; 8]) -> [[u8; 16]; 8]{
                 break;
             }
             block += 1;
+
+            // excess /=45;
 
             input[block][0] = (input[block][0] + ((excess * excess)% 126)as u8) % 126;
             
@@ -189,55 +193,22 @@ fn padding(mut input: [[u8; 16]; 8]) -> [[u8; 16]; 8]{
         }
         counter +=1;
     }
-
-    counter = 0;
-    block = 0;
-    loop {
-        input[block][counter] = ((input[block][counter] as i32 * modifier) % 255) as u8;
-        if input[block][counter] > 126 {
-            excess += (input[block][counter] / 126 * 5) as i32; 
-            input[block][counter] %= 126;
-            
-        }
-        
-        if input[block][counter] < 32 {
-            excess += ((input[block][counter])) as i32;
-            input[block][counter] += 33;
-        }
-        counter += 1;
-
-        if counter == 15{
-            counter = 0;
-            block +=1;
-            if block == 8 {
-                break;
+    let mut count1: usize = 0;
+    let mut count2: usize = 0;
+    for blocks in input {
+        for mut chars in blocks {
+            chars = ((chars as i32 * excess) % 125) as u8;
+            if chars <= 32 {
+                chars += 33;
             }
+            excess -=50;
+            input[count1][count2] = chars;
+            count2 +=1;
         }
-
-    }counter = 0;
-    block = 0;
-    loop {
-        input[block][counter] = ((input[block][counter] as i32 * modifier) % 255) as u8;
-        if input[block][counter] > 126 {
-            excess += (input[block][counter] / 126 * 5) as i32; 
-            input[block][counter] %= 126;
-            
-        }
-        
-        if input[block][counter] < 32 {
-            excess += ((input[block][counter])) as i32;
-            input[block][counter] += 33;
-        }
-        counter += 1;
-
-        if counter == 15{
-            counter = 0;
-            block +=1;
-            if block == 8 {
-                break;
-            }
-        }
-
+        excess =excess + excess /2;
+        count1 +=1;
+        count2 = 0;
     }
+
     input
 }

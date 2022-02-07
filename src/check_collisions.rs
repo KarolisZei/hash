@@ -17,16 +17,16 @@ pub fn check_col() -> std::io::Result<()> {
 
     let mut count: usize = 0;
     let reader = BufReader::new(f);
-    let mut diffAvg: u32 = 0;
+    let mut diff_avg: u32 = 0;
     let mut nr_checks = 0;
     for line in reader.lines() {
         nr_checks += 1;
         let temp_line = line.unwrap().clone();
         count += check_repeating_count(temp_line.clone());
-        diffAvg += check_byte(temp_line.clone()) as u32;
+        diff_avg += check_byte(temp_line.clone()) as u32;
     }
-    diffAvg = diffAvg / 32;
-    println!("The average difference in bytes: {}", diffAvg.to_string());
+    diff_avg = diff_avg / nr_checks;
+    println!("The average difference in bytes: {}", diff_avg.to_string());
     
     println!("The ammount of collision: {}", count.to_string());
     Ok(())

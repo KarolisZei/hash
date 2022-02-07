@@ -34,6 +34,10 @@ fn create_dir() -> std::io::Result<()> {
     let create_gen_files =
         cur_dir.into_os_string().into_string().unwrap().to_string() + "/gen_files";
 
+    if Path::new(&create_gen_files.clone()).exists() {
+        fs::remove_dir_all(create_gen_files.clone())?;
+    }
+
     let temp_dir = create_gen_files.clone();
 
     if Path::new(&create_gen_files).exists() == false {
@@ -55,6 +59,9 @@ fn create_dir() -> std::io::Result<()> {
         .ok();
 
     generate_100000(temp_dir.clone())
+        .map_err(|err| println!("{:?}", err))
+        .ok();
+    generate_100000_different_1(temp_dir.clone())
         .map_err(|err| println!("{:?}", err))
         .ok();
     Ok(())
